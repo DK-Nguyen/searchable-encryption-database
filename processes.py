@@ -5,9 +5,12 @@ from typing import List
 import logging
 from pathlib import Path
 from omegaconf import DictConfig
+import time
 
 from searching_in_the_dark import DataOwner, SearchUser, \
     TrustedAuthority, CloudServiceProvider
+
+from tools import logging_time
 
 # A logger for this file
 log = logging.getLogger(__name__)
@@ -26,9 +29,13 @@ def indexing(cfg: DictConfig, project_dir: str):
     :return:
     """
     log.info(f"------------------------- Indexing -------------------------")
+    start_indexing_time: float = time.time()
     data_owner = DataOwner(project_dir=project_dir, cfg=cfg.data_owner)
     # data owner creates the tables, generates the indexes required by the scheme
     data_owner.index_gen()
+    end_indexing_time: float = time.time()
+    logging_time(start_indexing_time, end_indexing_time, 'indexing')
+
     # show the created tables
     if cfg.data_owner.verbose:
         data_owner.fetch_table(table="index_ta", mode="all")
@@ -45,8 +52,12 @@ def file_insertion(cfg: DictConfig, project_dir: str):
     """
     # data owner generates the keys
     log.info(f"------------------------- File Insertion -------------------------")
+    start_insertion_time: float = time.time()
     data_owner = DataOwner(project_dir=project_dir, cfg=cfg.data_owner)
     data_owner.add_file(file=Path(project_dir)/cfg.data_owner.add_file)
+    end_insertion_time: float = time.time()
+    logging_time(start_insertion_time, end_insertion_time, 'file insertion')
+
     if cfg.data_owner.verbose:
         data_owner.fetch_table(table="index_ta", mode="all")
         data_owner.fetch_table(table="send_index_ta", mode="all")
@@ -65,6 +76,7 @@ def search(cfg: DictConfig, project_dir: str, search_word: str):
     :return:
     """
     log.info(f"------------------------- Searching -------------------------")
+    start_searching_time: float = time.time()
     data_owner = DataOwner(project_dir=project_dir, cfg=cfg.data_owner)
     csp_ciphertext_dir: Path = data_owner.get_csp_ciphertext_dir()
     search_user = SearchUser(project_dir=project_dir,
@@ -106,6 +118,9 @@ def search(cfg: DictConfig, project_dir: str, search_word: str):
             data_owner.increase_num_of_search(csp_acknowledgement, hashed_search_word)
             ta.increase_num_of_search(csp_acknowledgement, hashed_search_word)
 
+    end_searching_time: float = time.time()
+    logging_time(start_searching_time, end_searching_time, 'searching')
+
 
 def delete(cfg: DictConfig, project_dir: str):
     """
@@ -116,6 +131,8 @@ def delete(cfg: DictConfig, project_dir: str):
     :return:
     """
     log.info(f"------------------------- Delete -------------------------")
+    start_delete_time: float = time.time()
+
     data_owner = DataOwner(project_dir=project_dir, cfg=cfg.data_owner)
     if cfg.data_owner.verbose:
         log.info("(Data Owner) Fetching index_ta table BEFORE delete rows and decrease num files")
@@ -149,3 +166,6 @@ def delete(cfg: DictConfig, project_dir: str):
         log.info("(CSP) Fetching index_csp table AFTER delete rows and decrease num files")
         csp.fetch_table()
     csp.delete_file(delete_file_path)
+
+    end_delete_time: float = time.time()
+    logging_time(end_delete_time, start_delete_time, 'delete')

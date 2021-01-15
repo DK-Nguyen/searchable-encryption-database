@@ -48,6 +48,8 @@ class DataOwner:
         :return:
         """
         self.plaintext_dir: Path = Path(project_dir) / cfg.plaintext_dir
+        if not self.plaintext_dir.exists():
+            raise Exception(f"the plaintext dir {self.plaintext_dir} does not exist.")
 
         self.key_ta_path: Path = Path(project_dir) / 'data_owner/keys/key_ta.bin'
         self.key_ske_path: Path = Path(project_dir) / 'data_owner/keys/key_ske.bin'

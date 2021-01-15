@@ -337,3 +337,9 @@ def get_user_input():
         user_input = 0
 
     return user_input
+
+
+def logging_time(start_time: float, end_time: float, operation: str):
+    hours, rem = divmod(end_time - start_time, 3600)
+    minutes, seconds = divmod(rem, 60)
+    log.info("{} takes {:0>2}:{:0>2}:{:05.2f}".format(operation, int(hours), int(minutes), seconds))
