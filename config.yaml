@@ -1,0 +1,14 @@
+data_owner:
+  verbose: True
+  plaintext_dir: data_owner/plaintexts/E  # used in the indexing algorithm
+  add_file: data_owner/plaintexts/A/7e.txt  # used in file insertion algorithm
+  delete_file: cloud_service_provider/ciphertexts/E/4e.txt  # used in the delete algorithm
+
+trusted_authority:
+  verbose: True
+
+cloud_service_provider:
+  verbose: True
+
+search_user:
+  verbose: True
