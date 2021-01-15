@@ -1,8 +1,8 @@
 data_owner:
   verbose: True
-  plaintext_dir: data_owner/plaintexts/E  # used in the indexing algorithm
-  add_file: data_owner/plaintexts/A/7e.txt  # used in file insertion algorithm
-  delete_file: cloud_service_provider/ciphertexts/E/4e.txt  # used in the delete algorithm
+  plaintext_dir: data_owner/plaintexts/D184MB  # used in the indexing algorithm
+  add_file: data_owner/plaintexts/D184MB_A/500.txt  # used in file insertion algorithm
+  delete_file: cloud_service_provider/ciphertexts/D184MB/2e.txt  # used in the delete algorithm
 
 trusted_authority:
   verbose: True
