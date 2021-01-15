@@ -17,6 +17,8 @@ Automatically install necessary packages using conda: run
 
 The configurations are controlled by the values in ```config.yaml```.
 When proper configurations are configured, run ```python main.py``` and follow the instructions.
+After each run, all the logs will be saved to the file ```main.log``` in the automatically created 
+directory ```output/```.
 
 The figure below shows the tables that contain the indexes of the encrypted database, which are generated
 by the indexing algorithm. These tables are updated accordingly when the data owner add a file to the
