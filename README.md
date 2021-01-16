@@ -1,5 +1,5 @@
 # Symmetric searchable encryption database 
-An implementation of a searchable encryption database with forward privacy, following 
+An implementation of a searchable encryption database with forward privacy, according to 
 the paper [Power Range: Forward Private Multi-Client Symmetric Searchable Encryption with 
 Range Queries Support](https://ieeexplore.ieee.org/abstract/document/9219739) [Alexandros Bakas, Antonis Michalas].
 
