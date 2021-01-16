@@ -61,8 +61,8 @@ Note: * indicates that a directory/file is created automatically after running.
  ```
 
 When proper configurations are configured in the ```config.yaml```, the user can run ```python main.py```.
-Note that if you change the content of the file `config.yaml`, you need to
-quite the program and run again.
+Note that if the content of the file `config.yaml` is changed when the program is running, 
+you need to quit it and run again.
 There are several options that could be chosen from:
 - 1: if the user enters 1, the old automatically created directories, e.g. cloud_service_provider, trusted_authority, 
   and search_user will be removed, and the new empty ones will be created.
