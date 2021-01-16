@@ -69,7 +69,7 @@ There are several options that could be chosen from:
   The new keys are generated and sent to the proper actors.
 - 2: run the indexing algorithm, based on the value of `data_owner.plaintext_dir` in `config.yaml`.
 - 3: run the file insertion algorithm, based on the value of `data_owner.add_file` in `config.yaml`.
-- 4: search for a word that is entered by the user.
+- 4: search for files that contain a word entered by the user.
 - 5: delete a file, based on the value of `data_owner.delete_file` in `config.yaml`. 
 - 6: show all tables. 
 - 7: quit:.
