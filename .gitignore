@@ -7,9 +7,9 @@ data_owner/ciphertexts/
 data_owner/decryptedtexts/
 data_owner/indexes/
 data_owner/keys/
-data_owner/plaintexts/*
-!data_owner/plaintexts/E/
-!data_owner/plaintexts/A/
+#data_owner/plaintexts/*
+#!data_owner/plaintexts/E/
+#!data_owner/plaintexts/A/
 
 cloud_service_provider/
 search_user/

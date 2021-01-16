@@ -254,7 +254,7 @@ class DataOwner:
                             "existing files in the database")
 
         unique_words: List = find_unique_words(file_path=file,
-                                               sorted_list=True)
+                                               sorted_list=False)
 
         for word in unique_words:
             word_in_byte: bytes = bytes(word, encoding='utf-8')
