@@ -14,3 +14,6 @@ data_owner/keys/
 cloud_service_provider/
 search_user/
 trusted_authority/
+
+docs/
+saved_databases/
